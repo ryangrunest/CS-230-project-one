@@ -20,7 +20,17 @@ public class GameService {
 	 */
 	private static long nextGameId = 1;
 
-	// Add missing pieces to turn this class a singleton 
+	/*
+		Description of Singleton:
+
+		A singleton design pattern allows the creation of only one instance of an object in memory. 
+		The class itself provides a getter that returns the single instance of the object.
+		To do this, the constructor of the object needs to be private. There is also a private variable
+		- in this case singleGameService - that is set to the single instantiation of the class.
+		We then have a defined public getInstance method, that returns that private variable. 
+	*/ 
+
+	// Add missing pieces to turn this class a singleton
 	private static GameService singleGameService = new GameService();
 
 	private GameService() {}
@@ -82,6 +92,17 @@ public class GameService {
 		// a local game instance
 		Game game = null;
 
+		/*
+		 * Iterator Pattern:
+		 * 
+		 * For both getGame and addGame methods, I used the for-loop iterator
+		 * to loop through the list of games. If there is a game that matches the 
+		 * argument passed - either id or name, then set the local game variable to that game,
+		 * and break the for loop. If there was never a game found with the passed argument, then
+		 * the local game variable is still null, and therefore the returned value would be null. 
+		 * 
+		 */
+
 		// Use iterator to look for existing game with same id
 		// if found, simply assign that instance to the local variable
 		for (int i = 0; i < games.size(); i++) {
@@ -104,6 +125,17 @@ public class GameService {
 
 		// a local game instance
 		Game game = null;
+
+		/*
+		 * Iterator Pattern:
+		 * 
+		 * For both getGame and addGame methods, I used the for-loop iterator
+		 * to loop through the list of games. If there is a game that matches the 
+		 * argument passed - either id or name, then set the local game variable to that game,
+		 * and break the for loop. If there was never a game found with the passed argument, then
+		 * the local game variable is still null, and therefore the returned value would be null. 
+		 * 
+		 */
 
 		// Use iterator to look for existing game with same name
 		// if found, simply assign that instance to the local variable
