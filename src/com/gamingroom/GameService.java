@@ -20,8 +20,14 @@ public class GameService {
 	 */
 	private static long nextGameId = 1;
 
-	// FIXME: Add missing pieces to turn this class a singleton 
+	// Add missing pieces to turn this class a singleton 
+	private static GameService singleGameService = new GameService();
 
+	private GameService() {}
+
+	public static GameService getInstance() {
+		return singleGameService;
+	}
 
 	/**
 	 * Construct a new game instance
@@ -34,8 +40,14 @@ public class GameService {
 		// a local game instance
 		Game game = null;
 
-		// FIXME: Use iterator to look for existing game with same name
+		// Use iterator to look for existing game with same name
 		// if found, simply return the existing instance
+		for (int i = 0; i < games.size(); i++) {
+			if (games.get(i).name == name) {
+				game = games.get(i);
+				break;
+			}
+		}
 
 		// if not found, make a new game instance and add to list of games
 		if (game == null) {
@@ -70,8 +82,14 @@ public class GameService {
 		// a local game instance
 		Game game = null;
 
-		// FIXME: Use iterator to look for existing game with same id
+		// Use iterator to look for existing game with same id
 		// if found, simply assign that instance to the local variable
+		for (int i = 0; i < games.size(); i++) {
+			if (games.get(i).id == id) {
+				game = games.get(i);
+				break;
+			}
+		}
 
 		return game;
 	}
@@ -87,8 +105,14 @@ public class GameService {
 		// a local game instance
 		Game game = null;
 
-		// FIXME: Use iterator to look for existing game with same name
+		// Use iterator to look for existing game with same name
 		// if found, simply assign that instance to the local variable
+		for (int i = 0; i < games.size(); i++) {
+			if (games.get(i).name == name) {
+				game = games.get(i);
+				break;
+			}
+		}
 
 		return game;
 	}
