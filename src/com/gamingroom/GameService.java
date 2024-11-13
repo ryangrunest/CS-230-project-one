@@ -2,6 +2,7 @@ package com.gamingroom;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 /**
  * A singleton service for the game engine
@@ -49,15 +50,18 @@ public class GameService {
 
 		// a local game instance
 		Game game = null;
+    // initializing the iterator
+    Iterator<Game> iterator = games.iterator();
 
-		// Use iterator to look for existing game with same name
-		// if found, simply return the existing instance
-		for (int i = 0; i < games.size(); i++) {
-			if (games.get(i).name == name) {
-				game = games.get(i);
-				break;
-			}
-		}
+    // Use iterator to look for existing game with same name
+		// if found, set local game variable to game value
+    while (iterator.hasNext() && game == null) {
+      Game i = iterator.next();
+
+      if (i.getName() == name) {
+        game = i;
+      }
+    }
 
 		// if not found, make a new game instance and add to list of games
 		if (game == null) {
@@ -89,28 +93,30 @@ public class GameService {
 	 */
 	public Game getGame(long id) {
 
-		// a local game instance
-		Game game = null;
-
-		/*
+    /*
 		 * Iterator Pattern:
 		 * 
-		 * For both getGame and addGame methods, I used the for-loop iterator
-		 * to loop through the list of games. If there is a game that matches the 
-		 * argument passed - either id or name, then set the local game variable to that game,
-		 * and break the for loop. If there was never a game found with the passed argument, then
-		 * the local game variable is still null, and therefore the returned value would be null. 
+     * If there is a game that matches the 
+		 * argument passed - either id or name, then set the local game variable to that game.
+		 * If there was never a game found with the passed argument, 
+     * then the local game variable is still null, and therefore the returned value would be null. 
 		 * 
-		 */
+    */
 
-		// Use iterator to look for existing game with same id
+		// a local game instance
+		Game game = null;
+    // instantiate iterator
+    Iterator<Game> iterator = games.iterator();
+
+    // Use iterator to look for existing game with same id
 		// if found, simply assign that instance to the local variable
-		for (int i = 0; i < games.size(); i++) {
-			if (games.get(i).id == id) {
-				game = games.get(i);
-				break;
-			}
-		}
+    while (iterator.hasNext() && game == null) {
+      Game i = iterator.next();
+
+      if (i.id == id) {
+        game = i;
+      }
+    }
 
 		return game;
 	}
@@ -122,31 +128,32 @@ public class GameService {
 	 * @return requested game instance
 	 */
 	public Game getGame(String name) {
+    /*
+		 * Iterator Pattern:
+		 * 
+     * If there is a game that matches the 
+		 * argument passed - either id or name, then set the local game variable to that game.
+		 * If there was never a game found with the passed argument, 
+     * then the local game variable is still null, and therefore the returned value would be null. 
+		 * 
+    */
 
 		// a local game instance
 		Game game = null;
+    // instantiate iterator
+    Iterator<Game> iterator = games.iterator();
 
-		/*
-		 * Iterator Pattern:
-		 * 
-		 * For both getGame and addGame methods, I used the for-loop iterator
-		 * to loop through the list of games. If there is a game that matches the 
-		 * argument passed - either id or name, then set the local game variable to that game,
-		 * and break the for loop. If there was never a game found with the passed argument, then
-		 * the local game variable is still null, and therefore the returned value would be null. 
-		 * 
-		 */
-
-		// Use iterator to look for existing game with same name
+    // Use iterator to look for existing game with same name
 		// if found, simply assign that instance to the local variable
-		for (int i = 0; i < games.size(); i++) {
-			if (games.get(i).name == name) {
-				game = games.get(i);
-				break;
-			}
-		}
+    while (iterator.hasNext() && game == null) {
+      Game i = iterator.next();
 
-		return game;
+      if (i.name == name) {
+        game = i;
+      }
+    }
+
+    return game;
 	}
 
 	/**
