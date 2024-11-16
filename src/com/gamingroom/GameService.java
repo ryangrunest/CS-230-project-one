@@ -21,6 +21,16 @@ public class GameService {
 	 */
 	private static long nextGameId = 1;
 
+  /*
+	 * Holds the next player identifier
+	 */
+	private static long nextPlayerId = 1;
+
+  /*
+	 * Holds the next team identifier
+	 */
+	private static long nextTeamId = 1;
+
 	/*
 		Description of Singleton:
 
@@ -47,7 +57,6 @@ public class GameService {
 	 * @return the game instance (new or existing)
 	 */
 	public Game addGame(String name) {
-
 		// a local game instance
 		Game game = null;
     // initializing the iterator

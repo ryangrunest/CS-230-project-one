@@ -1,51 +1,58 @@
 package com.gamingroom;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
+
 /**
  * A simple class to hold information about a game
  * 
- * <p>
  * Notice the overloaded constructor that requires
  * an id and name to be passed when creating.
  * Also note that no mutators (setters) defined so
  * these values cannot be changed once a game is
  * created.
- * </p>
  * 
  * @author coce@snhu.edu
  *
  */
+
 public class Game extends Entity {
-	// long id;
-	// String name;
-	
-	/**
-	 * Hide the default constructor to prevent creating empty instances.
-	 */
-	// private Game() {}
+  private List<Team> teams = new ArrayList<Team>();
 
 	/**
 	 * Constructor with an identifier and name
 	 */
 	public Game(long id, String name) {
-		// this();
-		// this.id = id;
-		// this.name = name;
     super(id, name);
 	}
 
-	/**
-	 * @return the id
-	 */
-	// public long getId() {
-		// return id;
-	// }
+  public Team addTeam(String name) {
+    // local empty team instance
+    Team team = null;
 
-	/**
-	 * @return the name
-	 */
-	// public String getName() {
-		// return name;
-	// }
+    // init iterator
+    Iterator<Team> iterator = teams.iterator();
+
+    // use iterator to look for existing team with same name
+    // if found, set local var to team value
+    while (iterator.hasNext() && team == null) {
+      Team i = iterator.next();
+
+      if (i.getName() == name) {
+        team = i;
+      }
+    }
+
+    // if no team was found, create new team and add to teams list
+    if (team == null) {
+      team = new Team(1, name); // TODO: pass in unique id
+      teams.add(team);
+    }
+
+    // return the new or existing team
+    return team;
+  }
 
 	@Override
 	public String toString() {
