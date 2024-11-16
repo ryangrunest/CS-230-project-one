@@ -173,4 +173,12 @@ public class GameService {
 	public int getGameCount() {
 		return games.size();
 	}
+
+  public long getNextPlayerId() {
+    return nextPlayerId++;
+  }
+
+  public long getNextTeamId() {
+    return nextTeamId++;
+  }
 }

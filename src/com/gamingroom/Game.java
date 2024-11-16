@@ -3,6 +3,7 @@ package com.gamingroom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * A simple class to hold information about a game
@@ -30,7 +31,8 @@ public class Game extends Entity {
   public Team addTeam(String name) {
     // local empty team instance
     Team team = null;
-
+    // get instance of Game Service to get nest team id
+    GameService service = GameService.getInstance();
     // init iterator
     Iterator<Team> iterator = teams.iterator();
 
@@ -39,14 +41,14 @@ public class Game extends Entity {
     while (iterator.hasNext() && team == null) {
       Team i = iterator.next();
 
-      if (i.getName() == name) {
+      if (Objects.equals(i.getName(), name)) {
         team = i;
       }
     }
 
     // if no team was found, create new team and add to teams list
     if (team == null) {
-      team = new Team(1, name); // TODO: pass in unique id
+      team = new Team(service.getNextTeamId(), name);
       teams.add(team);
     }
 
@@ -56,7 +58,6 @@ public class Game extends Entity {
 
 	@Override
 	public String toString() {
-		
 		return "Game [id=" + this.getId() + ", name=" + this.getName() + "]";
 	}
 }
