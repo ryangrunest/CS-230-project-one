@@ -12,34 +12,32 @@ package com.gamingroom;
  * @author coce@snhu.edu
  *
  */
-public class Team {
-	long id;
-	String name;
-	
+public class Team extends Entity {
 	/*
 	 * Constructor with an identifier and name
 	 */
 	public Team(long id, String name) {
-		this.id = id;
-		this.name = name;
+		// this.id = id;
+		// this.name = name;
+    super(id, name);
 	}
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
+	// /**
+	//  * @return the id
+	//  */
+	// public long getId() {
+	// 	return id;
+	// }
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+	// /**
+	//  * @return the name
+	//  */
+	// public String getName() {
+	// 	return name;
+	// }
 
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", name=" + name + "]";
+		return "Team [id=" + this.getId() + ", name=" + this.getName() + "]";
 	}
 }

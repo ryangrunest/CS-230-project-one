@@ -14,43 +14,42 @@ package com.gamingroom;
  * @author coce@snhu.edu
  *
  */
-public class Game {
-	long id;
-	String name;
+public class Game extends Entity {
+	// long id;
+	// String name;
 	
 	/**
 	 * Hide the default constructor to prevent creating empty instances.
 	 */
-	private Game() {
-	}
+	// private Game() {}
 
 	/**
 	 * Constructor with an identifier and name
 	 */
 	public Game(long id, String name) {
-		this();
-		this.id = id;
-		this.name = name;
+		// this();
+		// this.id = id;
+		// this.name = name;
+    super(id, name);
 	}
 
 	/**
 	 * @return the id
 	 */
-	public long getId() {
-		return id;
-	}
+	// public long getId() {
+		// return id;
+	// }
 
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
-	}
+	// public String getName() {
+		// return name;
+	// }
 
 	@Override
 	public String toString() {
 		
-		return "Game [id=" + id + ", name=" + name + "]";
+		return "Game [id=" + this.getId() + ", name=" + this.getName() + "]";
 	}
-
 }

@@ -113,7 +113,7 @@ public class GameService {
     while (iterator.hasNext() && game == null) {
       Game i = iterator.next();
 
-      if (i.id == id) {
+      if (i.getId() == id) {
         game = i;
       }
     }
@@ -148,7 +148,7 @@ public class GameService {
     while (iterator.hasNext() && game == null) {
       Game i = iterator.next();
 
-      if (i.name == name) {
+      if (i.getName() == name) {
         game = i;
       }
     }
